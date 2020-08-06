@@ -1,33 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const Hello = (props) => {
+const Header = (props) => {
   return (
     <div>
-        Hello {props.name}, you are {props.age} years old
+      <h1>{props.name}</h1>
     </div>
   )
 }
 
-const Footer = () => {
+const Content  = (props) => {
   return (
     <div>
-      greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
+      <Part part={props.part.part1}/>
+      <Part part={props.part.part2}/>
+      <Part part={props.part.part3}/>
+    </div>
+  )
+}
+
+const Part = (props) => {
+  return (
+    <div>
+      <p>{props.part}</p>
+    </div>
+  )
+}
+
+const Total = (props) => {
+  return (
+    <div>
+      <p>Number of exercises: {props.total.exec1 + props.total.exec2 + props.total.exec3}</p>
     </div>
   )
 }
 
 const App = () => {
-  const name = 'Peter'
-  const age = 10
+  const course = 'Half Stack application development'
+  const parts = {
+    part1: 'Fundamentals of React',
+    part2: 'Using props to pass data',
+    part3: 'State of a component',
+  }
+
+  const exercises = {
+    exec1: 10,
+    exec2: 7,
+    exec3: 14,
+  }
 
   return (
-    <>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
-      <Footer />
-    </>
+    <div>
+      <Header name = {course}/>
+      <Content part = {parts} exec = {exercises}/>
+      <Total total = {exercises}/>
+    </div>
   )
 }
 
